@@ -265,7 +265,7 @@ export default function ShopDashboard() {
                   <button
                     onClick={handleUpload}
                     disabled={!selectedFile || uploading || status === "TRAINING"}
-                    className="w-full clay-sm py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full clay-sm py-3 rounded-xl hover:bg-primary/10 hover:scale-[1.03] active:scale-[0.97] border-primary/20 text-primary bg-primary/5 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {uploading ? (
                       <>
