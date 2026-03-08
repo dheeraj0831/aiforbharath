@@ -21,7 +21,7 @@ dynamodb = boto3.resource("dynamodb")
 SERIES_BUCKET = os.environ.get("SERIES_BUCKET", "kirana-ai-hackathon")
 SERIES_PREFIX = os.environ.get("SERIES_PREFIX", "data/series/")
 SHOP_USERS_TABLE = os.environ.get("SHOP_USERS_TABLE", "ShopUsers")
-BEDROCK_MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0")
+BEDROCK_MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "apac.amazon.nova-lite-v1:0")
 
 CORS_HEADERS = {
     "Content-Type": "application/json",

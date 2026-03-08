@@ -78,7 +78,7 @@ else
     --zip-file fileb:///tmp/chatbot_handler.zip \
     --timeout 30 \
     --memory-size 256 \
-    --environment "Variables={SERIES_BUCKET=kirana-ai-hackathon,SERIES_PREFIX=data/series/,SHOP_USERS_TABLE=ShopUsers,BEDROCK_MODEL_ID=amazon.nova-lite-v1:0}" \
+    --environment "Variables={SERIES_BUCKET=kirana-ai-hackathon,SERIES_PREFIX=data/series/,SHOP_USERS_TABLE=ShopUsers,BEDROCK_MODEL_ID=apac.amazon.nova-lite-v1:0}" \
     --region "$REGION"
 fi
 
