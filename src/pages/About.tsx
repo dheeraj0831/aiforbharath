@@ -21,9 +21,9 @@ export default function About() {
         </button>
 
         <ClayCard className="animate-fade-in-up">
-          <h1 className="text-lg font-bold text-foreground mb-2">How KiranaIQ Works</h1>
+          <h1 className="text-lg font-bold text-foreground mb-2">How BharatSense AI Works</h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            KiranaIQ helps small store owners make smarter stock and pricing decisions. Enter your product details
+            BharatSense AI helps small store owners make smarter stock and pricing decisions. Enter your product details
             and get a 7-day demand forecast powered by machine learning, enriched with real-time signals.
           </p>
         </ClayCard>

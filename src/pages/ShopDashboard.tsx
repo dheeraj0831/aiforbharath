@@ -129,7 +129,7 @@ export default function ShopDashboard() {
             <div className="w-8 h-8 rounded-xl bg-primary/20 flex items-center justify-center">
               <Package className="w-4 h-4 text-primary" />
             </div>
-            <span className="font-bold text-foreground text-sm">KiranaIQ</span>
+            <span className="font-bold text-foreground text-sm">BharatSense AI</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-xs text-muted-foreground hidden sm:block">

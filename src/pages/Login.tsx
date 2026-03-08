@@ -74,8 +74,8 @@ export default function Login() {
           <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center mb-4 clay-sm">
             <Package className="w-7 h-7 text-primary" />
           </div>
-          <h1 className="text-xl font-bold text-foreground">KiranaIQ</h1>
-          <p className="text-sm text-muted-foreground mt-1 text-center">Smart stock decisions for your kirana store</p>
+          <h1 className="text-xl font-bold text-foreground">BharatSense AI</h1>
+          <p className="text-sm text-muted-foreground mt-1 text-center">Smart stock decisions for your store</p>
         </div>
 
         <ClayCard>

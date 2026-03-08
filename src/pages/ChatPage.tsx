@@ -184,7 +184,7 @@ export default function ChatPage() {
                 <MessageCircle className="w-8 h-8 text-primary" />
               </div>
               <h1 className="text-2xl font-bold text-foreground mb-2">
-                KiranaIQ Assistant
+                BharatSense AI Assistant
               </h1>
               <p className="text-sm text-muted-foreground mb-8 text-center max-w-md">
                 Your AI-powered assistant for managing products, forecasts, and training.

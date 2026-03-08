@@ -107,7 +107,7 @@ function mockParseIntent(message: string): ChatResponse {
   // Greeting
   if (lower.match(/^(hi|hello|hey|namaste|good\s+(?:morning|afternoon|evening))/)) {
     return {
-      reply: "Namaste! 🙏 I'm KiranaIQ Assistant. I can help you add new products, check demand forecasts, and manage your AI training. What would you like to do?",
+      reply: "Namaste! 🙏 I'm BharatSense AI Assistant. I can help you add new products, check demand forecasts, and manage your AI training. What would you like to do?",
       intent: "general",
       data: {},
       suggestedReplies: ["Show my SKU catalog", "Add a new SKU", "Check training status", "What can you do?"],
