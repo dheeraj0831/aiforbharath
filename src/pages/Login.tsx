@@ -47,7 +47,11 @@ export default function Login() {
       const userData = await loginUser({ email, password });
       await loginWithEmail(userData);
       toast({ title: "Welcome back! 👋", description: `Logged in as ${userData.shopName}` });
-      navigate("/shop-dashboard");
+      if (userData.trainingStatus === "READY") {
+        navigate("/dashboard");
+      } else {
+        navigate("/shop-dashboard");
+      }
     } catch (err: any) {
       const msg = err?.response?.data?.error || err?.message || "Login failed";
       setError(msg + ". Try demo: demo@kirana.com / demo123");

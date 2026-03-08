@@ -40,18 +40,7 @@ export default function Header() {
               <Moon className="w-4 h-4 text-muted-foreground" />
             )}
           </button>
-          {isAuthenticated && (
-            <button
-              onClick={() => navigate("/chat")}
-              className={cn(
-                "p-2 rounded-xl transition-all duration-[250ms] hover:scale-110 hover:bg-muted",
-                location.pathname === "/chat" && "bg-muted"
-              )}
-              aria-label="AI Chat"
-            >
-              <MessageCircle className="w-4 h-4 text-muted-foreground" />
-            </button>
-          )}
+
           <button
             onClick={() => navigate("/about")}
             className={cn(

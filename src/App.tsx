@@ -13,6 +13,7 @@ import ForecastDetail from "@/pages/ForecastDetail";
 import About from "@/pages/About";
 import ChatPage from "@/pages/ChatPage";
 import NotFound from "@/pages/NotFound";
+import FloatingChatButton from "@/components/FloatingChatButton";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <FloatingChatButton />
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
