@@ -79,7 +79,7 @@ export async function postForecast(req: ForecastRequest): Promise<ForecastRespon
   }
 
   try {
-    const { data } = await axios.post<ForecastResponse>(`${BASE_URL}/forecast`, req);
+    const { data } = await axios.post<ForecastResponse>(`${BASE_URL}/kirana-ai `, req);
     retryCount = 0;
     return data;
   } catch (err) {
