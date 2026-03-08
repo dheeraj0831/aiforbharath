@@ -7,7 +7,7 @@ export default function FloatingChatButton() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  if (!isAuthenticated || location.pathname === "/chat" || location.pathname === "/" || location.pathname === "/signup") {
+  if (!isAuthenticated || location.pathname === "/chat" || location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/shop-dashboard") {
     return null;
   }
 
