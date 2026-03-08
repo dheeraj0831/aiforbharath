@@ -19,7 +19,7 @@ import { useAuth } from "@/hooks/useAuth";
 import {
   uploadSalesData,
   getTrainingStatus,
-  getTemplateDownloadUrl,
+  fetchTemplateDownloadUrl,
 } from "@/services/onboardingApi";
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: any; step: number }> = {
@@ -36,9 +36,28 @@ export default function ShopDashboard() {
 
   const [status, setStatus] = useState(user?.trainingStatus || "NOT_STARTED");
   const [uploading, setUploading] = useState(false);
+  const [downloadingTemplate, setDownloadingTemplate] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const pollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const handleDownloadTemplate = async () => {
+    setDownloadingTemplate(true);
+    try {
+      const url = await fetchTemplateDownloadUrl();
+      // create an invisible anchor to trigger download programmatically
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank"; // S3 presigned urls often open in a new tab if no content-disposition
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (err: any) {
+      toast({ title: "Download failed", description: err?.message || "Failed to fetch template URL.", variant: "destructive" });
+    } finally {
+      setDownloadingTemplate(false);
+    }
+  };
 
   const userId = user?.userId || "";
 
@@ -184,16 +203,23 @@ export default function ShopDashboard() {
               <p className="text-xs text-muted-foreground mb-3">
                 Download the Excel template, fill it with your sales data (date, product, units sold, price, etc.)
               </p>
-              <a
-                href={getTemplateDownloadUrl()}
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 clay-sm px-4 py-2.5 rounded-xl text-sm font-medium text-primary transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98]"
+              <button
+                onClick={handleDownloadTemplate}
+                disabled={downloadingTemplate}
+                className="inline-flex items-center gap-2 clay-sm px-4 py-2.5 rounded-xl text-sm font-medium text-primary transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Download className="w-4 h-4" />
-                Download Template
-              </a>
+                {downloadingTemplate ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Fetching Template...
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4" />
+                    Download Template
+                  </>
+                )}
+              </button>
             </div>
           </div>
         </ClayCard>

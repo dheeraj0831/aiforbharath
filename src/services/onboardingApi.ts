@@ -1,10 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = import.meta.env.VITE_API_URL || "";
-const TEMPLATE_URL =
-  import.meta.env.VITE_TEMPLATE_URL ||
-  "https://aiforbharath-templates.s3.ap-south-1.amazonaws.com/sales_template.xlsx";
-
+// Removed hardcoded TEMPLATE_URL since we will fetch a short-lived presigned URL from the backend
 // ─── Types ──────────────────────────────────────────────────────────────
 
 export interface SignupPayload {
@@ -156,6 +153,13 @@ export async function getTrainingStatus(
   return data;
 }
 
-export function getTemplateDownloadUrl(): string {
-  return TEMPLATE_URL;
+export async function fetchTemplateDownloadUrl(): Promise<string> {
+  if (!BASE_URL) {
+    await delay(400);
+    return "https://aiforbharath-templates.s3.ap-south-1.amazonaws.com/sales_template.xlsx";
+  }
+  const { data } = await axios.get<{ downloadUrl: string }>(
+    `${BASE_URL}/download-template`
+  );
+  return data.downloadUrl;
 }
