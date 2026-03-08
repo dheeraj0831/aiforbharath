@@ -214,6 +214,21 @@ export default function ChatPage() {
               {messages.map((msg, i) => (
                 <ChatBubble key={i} message={msg} onNavigate={navigate} />
               ))}
+              {suggestedReplies.length > 0 && !isLoading && (
+                <div className="flex flex-wrap gap-2 pl-11 animate-fade-in-up">
+                  {suggestedReplies.map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      onClick={() => handleSend(suggestion)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium
+                        border border-primary/20 text-primary bg-primary/5
+                        transition-all duration-[250ms] hover:bg-primary/10 hover:scale-[1.03] active:scale-[0.97]"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              )}
               {isLoading && <TypingIndicator />}
               <div ref={messagesEndRef} />
             </div>
@@ -224,22 +239,6 @@ export default function ChatPage() {
       {/* Suggested replies + Input bar */}
       <div className="sticky bottom-0 bg-background/80 backdrop-blur-md border-t border-border">
         <div className="container max-w-3xl px-4 pt-2 pb-3">
-          {/* Suggested reply chips */}
-          {suggestedReplies.length > 0 && !isLoading && (
-            <div className="flex flex-wrap gap-2 mb-2 animate-fade-in-up">
-              {suggestedReplies.map((suggestion) => (
-                <button
-                  key={suggestion}
-                  onClick={() => handleSend(suggestion)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium
-                    border border-primary/20 text-primary bg-primary/5
-                    transition-all duration-[250ms] hover:bg-primary/10 hover:scale-[1.03] active:scale-[0.97]"
-                >
-                  {suggestion}
-                </button>
-              ))}
-            </div>
-          )}
           <div className="flex items-center gap-2 clay-sm rounded-xl px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/30 transition-all">
             <input
               ref={inputRef}

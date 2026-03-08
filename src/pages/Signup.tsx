@@ -104,7 +104,7 @@ export default function Signup() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full clay-sm py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              className="w-full clay-sm py-3 rounded-xl hover:bg-primary/10 hover:scale-[1.03] active:scale-[0.97] border-primary/20 text-primary bg-primary/5 font-semibold text-sm transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
               {isLoading ? "Creating Account…" : "Create Account"}
             </button>

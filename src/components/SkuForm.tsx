@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 import ClayCard from "./ClayCard";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const SERIES_OPTIONS = [
   { id: "series_0", name: "Tata Dal 1kg" },
@@ -48,19 +55,26 @@ export default function SkuForm({ onSubmit, isLoading }: SkuFormProps) {
 
         <div>
           <label htmlFor="series" className="block text-xs text-muted-foreground mb-1.5">Product Series</label>
-          <select
-            id="series"
+          <Select
             value={seriesId}
-            onChange={(e) => handleSeriesChange(e.target.value)}
+            onValueChange={handleSeriesChange}
             disabled={isLoading}
-            className="w-full clay-inset px-3 py-2.5 rounded-xl text-sm text-foreground bg-bg-elev focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-[250ms]"
-            aria-label="Select product series"
           >
-            <option value="">Select series…</option>
-            {SERIES_OPTIONS.map((s) => (
-              <option key={s.id} value={s.id}>{s.name}</option>
-            ))}
-          </select>
+            <SelectTrigger
+              id="series"
+              className="w-full clay-inset px-3 py-2.5 rounded-xl text-sm text-foreground bg-bg-elev focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-[250ms] border-none [&>span]:line-clamp-1 h-auto"
+              aria-label="Select product series"
+            >
+              <SelectValue placeholder="Select series…" />
+            </SelectTrigger>
+            <SelectContent className="bg-bg-elev border-white/5 rounded-xl shadow-lg">
+              {SERIES_OPTIONS.map((s) => (
+                <SelectItem key={s.id} value={s.id} className="rounded-lg focus:bg-primary/20 focus:text-primary">
+                  {s.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           {errors.seriesId && <p className="text-accent-red text-xs mt-1">{errors.seriesId}</p>}
         </div>
 
@@ -98,7 +112,7 @@ export default function SkuForm({ onSubmit, isLoading }: SkuFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full clay-sm py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary/50"
+          className="w-full clay-sm py-3 rounded-xl hover:bg-primary/10 hover:scale-[1.03] active:scale-[0.97] border-primary/20 text-primary bg-primary/5 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary/50"
         >
           <Search className="w-4 h-4" />
           {isLoading ? "Forecasting…" : "Get Recommendation"}

@@ -41,6 +41,9 @@
     --clay-shadow-outer: 6px 6px 12px rgba(0,0,0,0.4), -2px -2px 8px rgba(255,255,255,0.03);
     --clay-shadow-inner: inset 2px 2px 4px rgba(255,255,255,0.05), inset -1px -1px 3px rgba(0,0,0,0.2);
     --clay-shadow-hover: 8px 8px 16px rgba(0,0,0,0.5), -3px -3px 10px rgba(255,255,255,0.04);
+    --clay-border: rgba(255, 255, 255, 0.04);
+    --clay-sm-shadow: 3px 3px 6px rgba(0,0,0,0.3), -1px -1px 4px rgba(255,255,255,0.02), inset 1px 1px 2px rgba(255,255,255,0.04);
+    --clay-inset-shadow: inset 3px 3px 6px rgba(0,0,0,0.4), inset -2px -2px 4px rgba(255,255,255,0.03);
 
     --sidebar-background: 222 36% 16%;
     --sidebar-foreground: 210 40% 98%;
@@ -53,44 +56,53 @@
   }
 
   html.light {
-    --background: 0 0% 100%;
+    --background: 210 20% 96%;
     --foreground: 222 47% 11%;
-    --card: 0 0% 96%;
+    --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 168 84% 64%;
+    --primary: 168 76% 40%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 270 91% 75%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 220 39% 91%;
-    --muted-foreground: 215 16% 35%;
-    --accent: 168 84% 64%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 94% 82%;
-    --destructive-foreground: 222 47% 11%;
+    --secondary: 270 50% 40%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 90%;
+    --muted-foreground: 215 16% 40%;
+    --accent: 168 76% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     --border: 0 0% 0% / 0.08;
     --input: 0 0% 0% / 0.08;
-    --ring: 168 84% 64%;
+    --ring: 168 76% 40%;
 
-    --bg-primary: 0 0% 100%;
-    --bg-surface: 0 0% 96%;
-    --bg-elev: 220 39% 91%;
+    --bg-primary: 210 20% 96%;
+    --bg-surface: 0 0% 100%;
+    --bg-elev: 210 20% 93%;
     --text-primary: 222 47% 11%;
-    --text-muted: 215 16% 35%;
+    --text-muted: 215 16% 40%;
+    
+    --accent-teal: 168 76% 40%;
+    --accent-purple: 270 50% 40%;
+    --accent-green: 142 69% 40%;
+    --accent-red: 0 84% 60%;
+    --accent-yellow: 48 96% 45%;
 
-    --clay-shadow-outer: 6px 6px 12px rgba(0,0,0,0.08), -2px -2px 8px rgba(255,255,255,0.8);
-    --clay-shadow-inner: inset 2px 2px 4px rgba(255,255,255,0.8), inset -1px -1px 3px rgba(0,0,0,0.05);
-    --clay-shadow-hover: 8px 8px 16px rgba(0,0,0,0.1), -3px -3px 10px rgba(255,255,255,0.9);
+    --clay-shadow-outer: 6px 6px 16px rgba(0,0,0,0.05), -6px -6px 16px rgba(255,255,255,0.8);
+    --clay-shadow-inner: inset 2px 2px 4px rgba(255,255,255,0.8), inset -2px -2px 4px rgba(0,0,0,0.03);
+    --clay-shadow-hover: 8px 8px 20px rgba(0,0,0,0.08), -8px -8px 20px rgba(255,255,255,0.9);
+    --clay-border: rgba(0, 0, 0, 0.04);
+    --clay-sm-shadow: 3px 3px 8px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.9), inset 1px 1px 2px rgba(255,255,255,0.8);
+    --clay-inset-shadow: inset 3px 3px 6px rgba(0,0,0,0.05), inset -2px -2px 4px rgba(255,255,255,0.7);
 
-    --sidebar-background: 0 0% 96%;
+    --sidebar-background: 210 20% 96%;
     --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 168 84% 64%;
+    --sidebar-primary: 168 76% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 39% 91%;
+    --sidebar-accent: 210 20% 90%;
     --sidebar-accent-foreground: 222 47% 11%;
     --sidebar-border: 0 0% 0% / 0.08;
-    --sidebar-ring: 168 84% 64%;
+    --sidebar-ring: 168 76% 40%;
   }
 }
 
@@ -108,22 +120,22 @@
   .clay {
     border-radius: 1.5rem;
     background: hsl(var(--bg-surface));
-    border: 1px solid rgba(255,255,255,0.04);
+    border: 1px solid var(--clay-border);
     box-shadow: var(--clay-shadow-outer), var(--clay-shadow-inner);
     backdrop-filter: blur(8px);
   }
   .clay-sm {
     border-radius: 1rem;
     background: hsl(var(--bg-surface));
-    border: 1px solid rgba(255,255,255,0.04);
-    box-shadow: 3px 3px 6px rgba(0,0,0,0.3), -1px -1px 4px rgba(255,255,255,0.02), inset 1px 1px 2px rgba(255,255,255,0.04);
+    border: 1px solid var(--clay-border);
+    box-shadow: var(--clay-sm-shadow);
     backdrop-filter: blur(4px);
   }
   .clay-inset {
     border-radius: 1rem;
     background: hsl(var(--bg-elev));
-    border: 1px solid rgba(255,255,255,0.02);
-    box-shadow: inset 3px 3px 6px rgba(0,0,0,0.4), inset -2px -2px 4px rgba(255,255,255,0.03);
+    border: 1px solid var(--clay-border);
+    box-shadow: var(--clay-inset-shadow);
   }
   .clay-hover {
     transition: all 250ms ease-in-out;

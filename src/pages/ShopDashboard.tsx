@@ -311,7 +311,7 @@ export default function ShopDashboard() {
                 </div>
                 <button
                   onClick={() => navigate("/dashboard")}
-                  className="w-full clay-sm py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full clay-sm py-3 rounded-xl hover:bg-primary/10 hover:scale-[1.03] active:scale-[0.97] border-primary/20 text-primary bg-primary/5 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <BarChart3 className="w-4 h-4" />
                   Go to Dashboard

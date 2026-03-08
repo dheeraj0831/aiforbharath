@@ -9,7 +9,6 @@ import { loginUser } from "@/services/onboardingApi";
 type LoginMode = "email" | "mobile";
 
 export default function Login() {
-  const [mode, setMode] = useState<LoginMode>("email");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -77,7 +76,7 @@ export default function Login() {
 
         <ClayCard>
           {/* Login mode tabs */}
-          <div className="flex gap-1 p-1 clay-inset rounded-xl mb-4">
+          {/* <div className="flex gap-1 p-1 clay-inset rounded-xl mb-4">
             <button
               type="button"
               onClick={() => { setMode("email"); setError(""); }}
@@ -102,10 +101,10 @@ export default function Login() {
               <Phone className="w-3.5 h-3.5 inline mr-1.5" />
               Mobile
             </button>
-          </div>
+          </div> */}
 
           {/* Email login form */}
-          {mode === "email" && (
+        
             <form onSubmit={handleEmailLogin} className="space-y-4">
               <div>
                 <label htmlFor="email" className="block text-xs text-muted-foreground mb-1.5">Email Address</label>
@@ -151,68 +150,14 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full clay-sm py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full clay-sm py-3 rounded-xl hover:bg-primary/10 hover:scale-[1.03] active:scale-[0.97] border-primary/20 text-primary bg-primary/5 font-semibold text-sm transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary/50"
               >
                 {loading ? "Signing in…" : "Login"}
               </button>
             </form>
-          )}
+      
 
-          {/* Mobile login form (original) */}
-          {mode === "mobile" && (
-            <form onSubmit={handleMobileLogin} className="space-y-4">
-              <div>
-                <label htmlFor="mobile" className="block text-xs text-muted-foreground mb-1.5">Mobile Number</label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input
-                    id="mobile"
-                    type="tel"
-                    maxLength={10}
-                    value={mobile}
-                    onChange={(e) => setMobile(e.target.value.replace(/\D/g, ""))}
-                    disabled={loading}
-                    placeholder="9876543210"
-                    className="w-full clay-inset pl-10 pr-3 py-2.5 rounded-xl text-sm text-foreground bg-bg-elev placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-[250ms]"
-                    aria-label="Mobile number"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="mobilePassword" className="block text-xs text-muted-foreground mb-1.5">Password</label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input
-                    id="mobilePassword"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    disabled={loading}
-                    placeholder="••••••"
-                    className="w-full clay-inset pl-10 pr-3 py-2.5 rounded-xl text-sm text-foreground bg-bg-elev placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-[250ms]"
-                    aria-label="Password"
-                  />
-                </div>
-              </div>
-
-              {error && <p className="text-accent-red text-xs" role="alert">{error}</p>}
-
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="rounded border-border" />
-                <span className="text-xs text-muted-foreground">Remember me</span>
-              </label>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full clay-sm py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all duration-[250ms] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary/50"
-              >
-                {loading ? "Signing in…" : "Login"}
-              </button>
-            </form>
-          )}
-
+        
           {/* Demo & Signup links */}
           <div className="mt-4 pt-4 border-t border-border/50">
             <button
