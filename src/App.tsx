@@ -11,6 +11,7 @@ import Dashboard from "@/pages/Dashboard";
 import ShopDashboard from "@/pages/ShopDashboard";
 import ForecastDetail from "@/pages/ForecastDetail";
 import About from "@/pages/About";
+import ChatPage from "@/pages/ChatPage";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/shop-dashboard" element={<ProtectedRoute><ShopDashboard /></ProtectedRoute>} />
             <Route path="/forecast" element={<ProtectedRoute><ForecastDetail /></ProtectedRoute>} />
+            <Route path="/chat" element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
